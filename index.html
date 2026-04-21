@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Fortress Terminal | Digital Management for Funeral Parlours</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -258,10 +258,81 @@
       line-height: 1.5;
     }
 
+    /* Billing Toggle */
+    .billing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .toggle-label {
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 32px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #30363d;
+      transition: 0.3s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 24px;
+      width: 24px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--gold);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(28px);
+    }
+
+    .save-badge {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 40px;
+      margin-left: 6px;
+      white-space: nowrap;
+    }
+
     /* Pricing */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       margin-top: 20px;
     }
@@ -272,6 +343,12 @@
       padding: 32px;
       text-align: center;
       transition: 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
     }
     .pricing-card.popular {
       border-color: var(--gold);
@@ -291,27 +368,47 @@
       border-radius: 30px;
       text-transform: uppercase;
     }
+    
+    /* Price container for toggle */
+    .price-container {
+      margin: 20px 0 8px;
+    }
+    
     .price {
       font-size: 2.5rem;
       font-weight: 800;
-      margin: 20px 0 8px;
       color: var(--gold);
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px;
     }
     .price span {
       font-size: 1rem;
       font-weight: 400;
       color: var(--text-muted);
     }
+    
+    .annual-note {
+      font-size: 0.7rem;
+      color: #10b981;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+    
     .pricing-card ul {
       list-style: none;
       margin: 24px 0;
       text-align: left;
+      flex-grow: 1;
     }
     .pricing-card li {
       margin: 12px 0;
       display: flex;
       align-items: center;
       gap: 10px;
+      font-size: 0.9rem;
     }
     .pricing-card li::before {
       content: "✓";
@@ -319,26 +416,7 @@
       font-weight: bold;
     }
 
-    /* Testimonial */
-    .testimonial-card {
-      background: var(--gray-bg);
-      border-left: 4px solid var(--gold);
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .testimonial-card p {
-      font-size: 1.1rem;
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-    .testimonial-author {
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    /* Contact / Demo form */
+    /* Contact Grid */
     .contact-grid {
       display: flex;
       flex-wrap: wrap;
@@ -364,6 +442,42 @@
       gap: 12px;
       margin: 16px 0;
     }
+    
+    /* QR Code in Contact Section */
+    .telegram-qr {
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 1px solid var(--gray-border);
+      text-align: center;
+    }
+    .telegram-qr h4 {
+      color: var(--gold);
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+    .qr-code-box {
+      background: white;
+      padding: 16px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .qr-code-box img {
+      width: 150px;
+      height: 150px;
+      display: block;
+    }
+    .telegram-link {
+      background: rgba(212, 175, 55, 0.15);
+      padding: 8px 16px;
+      border-radius: 40px;
+      display: inline-block;
+      font-family: monospace;
+      color: var(--gold);
+      font-size: 0.85rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    
     .contact-form {
       flex: 1;
     }
@@ -426,6 +540,25 @@
       letter-spacing: 1px;
     }
 
+    /* Testimonial */
+    .testimonial-card {
+      background: var(--gray-bg);
+      border-left: 4px solid var(--gold);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .testimonial-card p {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--gold);
+    }
+
     @media (max-width: 800px) {
       .hero-content h1 {
         font-size: 2.2rem;
@@ -447,6 +580,21 @@
       .btn-primary, .btn-secondary {
         width: 100%;
         text-align: center;
+      }
+      .billing-toggle {
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+      .toggle-label {
+        font-size: 0.9rem;
+      }
+      .save-badge {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+      }
+      .qr-code-box img {
+        width: 120px;
+        height: 120px;
       }
     }
   </style>
@@ -471,7 +619,7 @@
 </div>
 
 <main>
-  <!-- Hero -->
+  <!-- Hero with REAL Dashboard Image -->
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
@@ -488,7 +636,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="https://placehold.co/500x400/0d1117/d4af37?text=Fortress+Dashboard" alt="Fortress Terminal dashboard preview">
+        <img src="https://placehold.co/600x450/0d1117/d4af37?text=FINANCIAL+DASHBOARD" alt="Fortress Terminal Dashboard - Financial Overview">
       </div>
     </div>
   </section>
@@ -551,7 +699,7 @@
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- Pricing Section with Annual Toggle -->
   <section id="pricing">
     <div class="container">
       <div class="section-title">
@@ -559,27 +707,57 @@
         <div class="gold-line"></div>
         <p class="section-sub">Start with Starter, scale as you grow. No hidden fees.</p>
       </div>
+
+      <!-- Annual Billing Toggle -->
+      <div class="billing-toggle">
+        <span class="toggle-label">Monthly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="billingToggle">
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Annual <span class="save-badge">Save ~17%</span></span>
+      </div>
+
       <div class="pricing-grid">
+        <!-- STARTER Plan -->
         <div class="pricing-card">
           <h3>Starter</h3>
-          <div class="price">R500 <span>/month</span></div>
-          <p>Perfect for new parlours or small burial societies.</p>
+          <div class="price-container">
+            <div class="price">
+              <span class="monthly-price">R500</span>
+              <span class="annual-price" style="display:none;">R4,980</span>
+              <span>/month</span>
+            </div>
+            <div class="annual-note" style="display:none;">billed annually (R415/month)</div>
+          </div>
+          <p style="font-size: 0.9rem; margin-top: -10px;">Perfect for new parlours or small burial societies.</p>
           <ul>
-            <li>Up to 200 members</li>
-            <li>Basic member & premium tracking</li>
-            <li>Email support</li>
-            <li>Manual reports</li>
+            <li>Claim submission & validation</li>
+            <li>Master member list management (Create/Read)</li>
+            <li>Automatic payment status calculations</li>
+            <li>Digital receipts for claims & registrations</li>
+            <li>On-the-fly reporting & UI ledger</li>
             <li>30-day free trial</li>
           </ul>
           <a href="#demo" class="btn-secondary" style="width:100%; margin-top: 16px;">Start free trial</a>
         </div>
+
+        <!-- GROWTH Plan -->
         <div class="pricing-card popular">
           <div class="popular-badge">🔥 MOST POPULAR</div>
           <h3>Growth</h3>
-          <div class="price">R1,200 <span>/month</span></div>
-          <p>Best for established parlours with 200–500 members.</p>
+          <div class="price-container">
+            <div class="price">
+              <span class="monthly-price">R1,200</span>
+              <span class="annual-price" style="display:none;">R11,950</span>
+              <span>/month</span>
+            </div>
+            <div class="annual-note" style="display:none;">billed annually (R996/month)</div>
+          </div>
+          <p style="font-size: 0.9rem; margin-top: -10px;">Best for established parlours with 200–500 members.</p>
           <ul>
-            <li>Up to 500 members</li>
+            <li>All Starter features</li>
+            <li>Interactive Dashboard page</li>
             <li>Automated arrears alerts</li>
             <li>Daily reports & PDF export</li>
             <li>WhatsApp priority support</li>
@@ -588,13 +766,23 @@
           </ul>
           <a href="#demo" class="btn-primary" style="width:100%; margin-top: 16px;">Get Growth</a>
         </div>
+
+        <!-- BUSINESS Plan -->
         <div class="pricing-card">
           <h3>Business</h3>
-          <div class="price">R2,200 <span>/month</span></div>
-          <p>For busy parlours with 500–2,000 members.</p>
+          <div class="price-container">
+            <div class="price">
+              <span class="monthly-price">R2,200</span>
+              <span class="annual-price" style="display:none;">R21,900</span>
+              <span>/month</span>
+            </div>
+            <div class="annual-note" style="display:none;">billed annually (R1,825/month)</div>
+          </div>
+          <p style="font-size: 0.9rem; margin-top: -10px;">For busy parlours with 500–2,000 members.</p>
           <ul>
-            <li>Up to 2,000 members</li>
-            <li>All Growth features +</li>
+            <li>All Growth features</li>
+            <li>Integrated POS payments (iKhokha/Yoco)</li>
+            <li>Claim progression (Fieldservice/Kanban)</li>
             <li>Multiple consultants & roles</li>
             <li>On‑site training (1 session)</li>
             <li>Custom reports & analytics</li>
@@ -607,7 +795,7 @@
     </div>
   </section>
 
-  <!-- Testimonial placeholder -->
+  <!-- Testimonial -->
   <section>
     <div class="container">
       <div class="testimonial-card">
@@ -617,7 +805,7 @@
     </div>
   </section>
 
-  <!-- Demo & Contact (combined) -->
+  <!-- Demo & Contact with QR Code -->
   <section id="demo">
     <div class="container">
       <div class="section-title">
@@ -634,14 +822,29 @@
             <div>✉️ <strong>Email:</strong> <a href="mailto:thabang.tsontsi@gmail.com" style="color: var(--gold);">thabang.tsontsi@gmail.com</a></div>
             <div>📍 <strong>Support hours:</strong> Mon–Sat, 8am – 6pm (WhatsApp support in English, Zulu, Sotho)</div>
           </div>
-          <div style="margin-top: 32px;">
+          
+          <!-- TELEGRAM QR CODE -->
+          <div class="telegram-qr">
+            <h4>📱 Connect with us on Telegram</h4>
+            <div class="qr-code-box">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://t.me/fortress_horizonBot" 
+                   alt="Telegram QR Code for @fortress_horizonBot">
+            </div>
+            <div class="telegram-link">
+              🤖 @fortress_horizonBot
+            </div>
+            <p style="font-size: 0.75rem; margin-top: 12px; color: var(--text-muted);">
+              Scan to chat with our bot or click <a href="https://t.me/fortress_horizonBot" style="color: var(--gold);">t.me/fortress_horizonBot</a>
+            </p>
+          </div>
+          
+          <div style="margin-top: 24px;">
             <a href="https://wa.me/27837906146?text=Hi%2C%20I%27m%20interested%20in%20Fortress%20Terminal%20demo" class="btn-primary" style="background: #25D366; color: #fff; border: none;">💬 Chat on WhatsApp</a>
           </div>
         </div>
         <div class="contact-form">
           <h3 style="margin-bottom: 24px;">Request a free demo</h3>
           <form action="https://formsubmit.co/thabang.tsontsi@gmail.com" method="POST" id="demoForm">
-            <!-- FormSubmit configuration -->
             <input type="hidden" name="_subject" value="New Fortress Terminal Demo Request">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
@@ -682,6 +885,7 @@
     <p style="margin-top: 8px;">Helping Soweto's funeral parlours serve families better, one record at a time.</p>
     <p style="margin-top: 16px;">📞 <strong>Call or WhatsApp:</strong> <span class="phone-number">083 790 6146</span></p>
     <p>✉️ <strong>Email:</strong> <a href="mailto:thabang.tsontsi@gmail.com" style="color: var(--gold);">thabang.tsontsi@gmail.com</a></p>
+    <p>🤖 <strong>Telegram:</strong> <a href="https://t.me/fortress_horizonBot" style="color: var(--gold);">@fortress_horizonBot</a></p>
     <p>© 2025 StooshTech Concepts. All rights reserved.</p>
     <div class="footer-note">🔹 This is a StooshTech Concepts solution – innovative technology for African funeral homes.</div>
   </div>
@@ -707,6 +911,57 @@
       }
     });
   });
+
+  // Annual billing toggle functionality
+  const toggle = document.getElementById('billingToggle');
+  
+  const pricing = {
+    starter: { monthly: 500, annual: 4980, effectiveMonthly: 415 },
+    growth: { monthly: 1200, annual: 11950, effectiveMonthly: 996 },
+    business: { monthly: 2200, annual: 21900, effectiveMonthly: 1825 }
+  };
+  
+  function updatePricing(isAnnual) {
+    const cards = document.querySelectorAll('.pricing-card');
+    
+    cards.forEach(card => {
+      const title = card.querySelector('h3').innerText;
+      let plan = '';
+      if (title.includes('Starter')) plan = 'starter';
+      else if (title.includes('Growth')) plan = 'growth';
+      else if (title.includes('Business')) plan = 'business';
+      
+      const monthlySpan = card.querySelector('.monthly-price');
+      const annualSpan = card.querySelector('.annual-price');
+      const annualNote = card.querySelector('.annual-note');
+      
+      if (isAnnual) {
+        if (monthlySpan) monthlySpan.style.display = 'none';
+        if (annualSpan) {
+          annualSpan.style.display = 'inline';
+          annualSpan.innerText = `R${pricing[plan].annual.toLocaleString()}`;
+        }
+        if (annualNote) {
+          annualNote.style.display = 'block';
+          annualNote.innerText = `billed annually (R${pricing[plan].effectiveMonthly}/month)`;
+        }
+      } else {
+        if (monthlySpan) {
+          monthlySpan.style.display = 'inline';
+          monthlySpan.innerText = `R${pricing[plan].monthly}`;
+        }
+        if (annualSpan) annualSpan.style.display = 'none';
+        if (annualNote) annualNote.style.display = 'none';
+      }
+    });
+  }
+  
+  if (toggle) {
+    updatePricing(false);
+    toggle.addEventListener('change', (e) => {
+      updatePricing(e.target.checked);
+    });
+  }
 </script>
 </body>
 </html>
